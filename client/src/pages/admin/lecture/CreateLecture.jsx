@@ -7,7 +7,7 @@ import { Loader2 } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { toast } from 'sonner'
-import Lecture from './lecture.jsx'
+import Lecture from './Lecture.jsx'
 
 const CreateLecture = () => {
     const { courseId } = useParams();
