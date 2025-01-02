@@ -4,7 +4,7 @@ import { Card, CardContent } from '@/components/ui/card'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const Course = ({ course, creatorDetails }) => {
+const Course = ({ course }) => {
   // console.log("course -> course.jsx: ", course);
   
   return (
@@ -24,10 +24,10 @@ const Course = ({ course, creatorDetails }) => {
           <div className='flex justify-between items-center'>
             <div className='flex items-center gap-3 '>
               <Avatar className='h-8 w-8'>
-                <AvatarImage src={creatorDetails?.photoUrl?.url || "https://github.com/shadcn.png"} alt="@shadcn" />
+                <AvatarImage src={course?.creator_details?.photoUrl?.url || "https://github.com/shadcn.png"} alt="@shadcn" />
                 <AvatarFallback>CN</AvatarFallback>
               </Avatar>
-              <h1 className='font-medium text-sm'>{creatorDetails?.name || "Username"}</h1>
+              <h1 className='font-medium text-sm'>{course?.creator_details?.name || "Username"}</h1>
             </div>
             <Badge className={'bg-blue-600 text-white px-2 py-1 text-xs rounded-full'}>{course?.courseLevel || "Medium"}</Badge>
           </div>

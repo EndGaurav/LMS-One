@@ -60,3 +60,5 @@ coverage/
 # Cache
 .cache/
 *.cache/
+
+.codegpt
