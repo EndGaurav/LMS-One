@@ -34,6 +34,23 @@ const registerUser = asyncHandler(async (req, res) => {
         throw new ApiError(400, "All fields are required");
     }
 
+    if (typeof name !== 'string' || name.trim().length < 2) {
+        throw new ApiError(400, "Name must be at least 2 characters long");
+    }
+
+    if (!/^[a-zA-Z\s]+$/.test(name)) {
+        throw new ApiError(400, "Name can only contain letters and spaces");
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        throw new ApiError(400, "Invalid email format");
+    }
+
+    if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,}$/.test(password)) {
+        throw new ApiError(400, "Password must be at least 8 characters long and include a letter and a number");
+    }
+
     const existedUser = await User.findOne({ email });
 
     if (existedUser) {
